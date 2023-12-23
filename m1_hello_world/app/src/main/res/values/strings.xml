@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">homework</string>
+    <string name="reset">Сброс</string>
 </resources>
