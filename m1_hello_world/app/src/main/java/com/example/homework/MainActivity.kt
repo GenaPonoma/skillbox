@@ -11,69 +11,79 @@ class MainActivity : AppCompatActivity() {
     private val remainingSeats = 50
     private var counter = 0
     private var countFreePlaces = remainingSeats
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (counter == 0) {
-            binding.resetButton.visibility = View.INVISIBLE
-            binding.informationMessage.text = "Все места свободны"
-            binding.informationMessage.setTextColor(Color.parseColor("#0aad3f"))
-            binding.placeCounter.text = counter.toString()
-        }
-
+        standardOutput(binding)
 
         binding.plusButton.setOnClickListener {
-            it.isActivated = counter < remainingSeats
-            if (it.isActivated) {
-                binding.resetButton.visibility = View.INVISIBLE
-                binding.informationMessage.setTextColor(Color.parseColor("#0000ff"))
-                binding.placeCounter.text = counter++.toString()
-                binding.placeCounter.text = counter.toString()
-                countFreePlaces = сalck()
-                binding.informationMessage.text = "Колличество свободных мест: $countFreePlaces"
-            }
-            if (counter == remainingSeats) {
-                binding.informationMessage.text = "Пассажиров слишком много !"
-                binding.informationMessage.setTextColor(Color.parseColor("#FF0000"))
-                binding.resetButton.visibility = View.VISIBLE
-
-
-            }
-
+            updateScreenState(binding, it)
 
         }
         binding.minusButton.setOnClickListener {
-
-            it.isActivated = counter != 0
-            if (it.isActivated) {
-                binding.resetButton.visibility = View.INVISIBLE
-                binding.informationMessage.setTextColor(Color.parseColor("#0000ff"))
-                binding.placeCounter.text = counter--.toString()
-                binding.placeCounter.text = counter.toString()
-                countFreePlaces = сalck()
-                binding.informationMessage.text = "Колличество свободных мест: $countFreePlaces"
-                if (counter == 0) {
-                    binding.informationMessage.text = "Все места свободны"
-                    binding.informationMessage.setTextColor(Color.parseColor("#0aad3f"))
-                }
-
-            }
+            updateScreenState(binding, it)
 
         }
         binding.resetButton.setOnClickListener {
             counter = 0
-            binding.resetButton.visibility = View.INVISIBLE
-            binding.informationMessage.text = "Все места свободны"
-            binding.informationMessage.setTextColor(Color.parseColor("#0aad3f"))
-            binding.placeCounter.text = counter.toString()
+            updateScreenState(binding, it)
         }
 
     }
 
-    private fun сalck(): Int {
+    @SuppressLint("SetTextI18n")
+    private fun updateScreenState(binding: ActivityMainBinding, it: View) {
+        when (it) {
+            binding.resetButton -> {
+                standardOutput(binding)
+            }
+
+            binding.plusButton -> {
+                it.isActivated = counter < remainingSeats
+                if (it.isActivated) {
+                    binding.resetButton.visibility = View.INVISIBLE
+                    binding.informationMessage.setTextColor(Color.parseColor("#0000ff"))
+                    binding.placeCounter.text = counter++.toString()
+                    binding.placeCounter.text = counter.toString()
+                    countFreePlaces = calcPlaces()
+                    binding.informationMessage.text = "Колличество свободных мест: $countFreePlaces"
+                }
+                if (counter == remainingSeats) {
+                    binding.informationMessage.text = "Пассажиров слишком много !"
+                    binding.informationMessage.setTextColor(Color.parseColor("#FF0000"))
+                    binding.resetButton.visibility = View.VISIBLE
+                }
+            }
+
+            binding.minusButton -> {
+                it.isActivated = counter != 0
+                if (it.isActivated) {
+                    binding.resetButton.visibility = View.INVISIBLE
+                    binding.informationMessage.setTextColor(Color.parseColor("#0000ff"))
+                    binding.placeCounter.text = counter--.toString()
+                    binding.placeCounter.text = counter.toString()
+                    countFreePlaces = calcPlaces()
+                    binding.informationMessage.text = "Колличество свободных мест: $countFreePlaces"
+                    if (counter == 0) {
+                        standardOutput(binding)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun standardOutput(binding: ActivityMainBinding) {
+        binding.resetButton.visibility = View.INVISIBLE
+        binding.informationMessage.text = "Все места свободны"
+        binding.informationMessage.setTextColor(Color.parseColor("#0aad3f"))
+        binding.placeCounter.text = counter.toString()
+    }
+
+    private fun calcPlaces(): Int {
         return remainingSeats - counter
 
     }
