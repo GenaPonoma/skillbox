@@ -8,10 +8,7 @@ import android.view.View
 import com.example.homework.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private val remainingSeats = 50
-    private var counter = 0
-    private var countFreePlaces = remainingSeats
-    private lateinit var binding: ActivityMainBinding
+
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,11 +16,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        outputCounterZero()
+        updateScreenState()
 
         binding.plusButton.setOnClickListener {
             counter++
-
             updateScreenState()
 
         }
@@ -87,4 +83,13 @@ class MainActivity : AppCompatActivity() {
         return remainingSeats - counter
 
     }
+
+    companion object {
+        private const val remainingSeats = 50
+        private var counter = 0
+        private var countFreePlaces = remainingSeats
+        private lateinit var binding: ActivityMainBinding
+
+    }
+
 }
