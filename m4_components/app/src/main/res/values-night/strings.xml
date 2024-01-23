@@ -1,7 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">homework</string>
-    <string name="help_name">Имя</string>
-    <string name="todo">TODO</string>
     <string name="help_phone">Телефон</string>
     <string name="heading_text_view">Пол</string>
     <string name="switch_name">Получать уведомдения</string>

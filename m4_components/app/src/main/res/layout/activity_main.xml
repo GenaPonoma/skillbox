@@ -10,23 +10,24 @@
         android:id="@+id/imageView"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
         app:srcCompat="@drawable/kot" />
 
     <com.google.android.material.textfield.TextInputLayout
 
-        android:id="@+id/textinput"
+        android:id="@+id/text_input_name"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="90dp"
         android:layout_margin="12dp"
         android:hint="@string/help_name"
         app:counterEnabled="true"
-        app:counterMaxLength="10"
+        app:counterMaxLength="40"
         app:endIconMode="clear_text"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView">
@@ -35,4 +36,72 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:id="@+id/text_input_phone"
+        style="@style/YourCustomFilledBoxStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:hint="@string/help_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_input_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/text_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16sp"
+        android:text="@string/heading_text_view"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/text_input_phone"
+        app:layout_constraintTop_toBottomOf="@+id/text_input_phone" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/text_header"
+        app:layout_constraintTop_toBottomOf="@+id/text_header">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="М"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ж"/>
+    </RadioGroup>
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@+id/radio_group"
+        app:layout_constraintEnd_toEndOf="@+id/text_input_phone"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group"
+
+        android:text="@string/switch_name"
+        />
+
+    <CheckBox
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/text_input_phone"
+
+        app:layout_constraintStart_toStartOf="@+id/radio_group"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group">
+
+    </CheckBox>
 </androidx.constraintlayout.widget.ConstraintLayout>
