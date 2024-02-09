@@ -33,6 +33,7 @@
         app:layout_constraintTop_toBottomOf="@id/imageView">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -51,6 +52,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_input_name">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edit_phone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="phone" />
@@ -76,32 +78,83 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="М"/>
+            android:text="@string/Paul_Me" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ж"/>
+            android:text="@string/Paul_Je" />
     </RadioGroup>
+
     <com.google.android.material.switchmaterial.SwitchMaterial
+       android:id="@+id/receive_updates"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
-        app:layout_constraintStart_toStartOf="@+id/radio_group"
-        app:layout_constraintEnd_toEndOf="@+id/text_input_phone"
-        app:layout_constraintTop_toBottomOf="@+id/radio_group"
-
         android:text="@string/switch_name"
-        />
+        app:layout_constraintEnd_toEndOf="@+id/text_input_phone"
+        app:layout_constraintStart_toStartOf="@+id/radio_group"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group" />
 
     <CheckBox
+        android:id="@+id/checkbox_1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:text="@string/about_authorization_on_the_device"
         app:layout_constraintEnd_toEndOf="@+id/text_input_phone"
-
         app:layout_constraintStart_toStartOf="@+id/radio_group"
         app:layout_constraintTop_toBottomOf="@+id/radio_group">
 
     </CheckBox>
+
+    <CheckBox
+        android:id="@+id/checkbox_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/about_new_products_and_offers"
+        app:layout_constraintEnd_toEndOf="@+id/text_input_phone"
+        app:layout_constraintStart_toStartOf="@+id/radio_group"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_1">
+
+    </CheckBox>
+
+    <TextView
+        android:id="@+id/title_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16sp"
+        android:text="Баллы"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/checkbox_2"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_2" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:progress="44"
+        app:layout_constraintEnd_toEndOf="@+id/checkbox_2"
+        app:layout_constraintStart_toStartOf="@+id/title_"
+        app:layout_constraintTop_toBottomOf="@+id/title_" />
+
+    <TextView
+        android:id="@+id/progress_set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/checkbox_2"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_2" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save_button"
+        android:layout_marginTop="12dp"
+        android:text="Сохранить"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:shadowRadius="23"
+        app:layout_constraintStart_toStartOf="@id/progress_horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/checkbox_2"
+        app:layout_constraintTop_toBottomOf="@+id/progress_horizontal"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
