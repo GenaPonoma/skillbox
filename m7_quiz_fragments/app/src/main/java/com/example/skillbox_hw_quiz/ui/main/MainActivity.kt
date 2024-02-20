@@ -1,9 +1,6 @@
 package com.example.skillbox_hw_quiz.ui.main
-import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.OnBackPressedCallback
-import com.example.skillbox_hw_quiz.HelloFragment
+import androidx.appcompat.app.AppCompatActivity
 import com.example.skillbox_hw_quiz.databinding.MainActivityBinding
 
 

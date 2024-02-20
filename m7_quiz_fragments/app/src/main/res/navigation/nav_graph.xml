@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +8,7 @@
         android:id="@+id/helloFragment"
         android:name="com.example.skillbox_hw_quiz.HelloFragment"
         android:label="fragment_hello"
-        tools:layout="@layout/fragment_hello" >
+        tools:layout="@layout/fragment_hello">
         <action
             android:id="@+id/action_helloFragment_to_surveyFragment"
             app:destination="@id/surveyFragment" />
@@ -18,25 +17,27 @@
         android:id="@+id/surveyFragment"
         android:name="com.example.skillbox_hw_quiz.SurveyFragment"
         android:label="fragment_survey"
-        tools:layout="@layout/fragment_survey" >
-        <action
-            android:id="@+id/action_surveyFragment_to_resultsFragment"
-            app:destination="@id/resultsFragment" />
+        tools:layout="@layout/fragment_survey">
         <action
             android:id="@+id/action_surveyFragment_to_helloFragment"
             app:destination="@id/helloFragment" />
+        <action
+            android:id="@+id/action_surveyFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment"
+            app:popUpTo="@id/helloFragment"
+            app:popUpToInclusive="false"
+            />
 
     </fragment>
     <fragment
         android:id="@+id/resultsFragment"
         android:name="com.example.skillbox_hw_quiz.ResultsFragment"
         android:label="fragment_results"
-        tools:layout="@layout/fragment_results" >
+        tools:layout="@layout/fragment_results">
         <action
             android:id="@+id/action_resultsFragment_to_surveyFragment"
-            app:destination="@id/surveyFragment" />
-        <action
-            android:id="@+id/action_resultsFragment_to_helloFragment"
-            app:destination="@id/helloFragment" />
+            app:destination="@id/surveyFragment"
+                />
+
     </fragment>
 </navigation>

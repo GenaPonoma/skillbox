@@ -17,7 +17,7 @@ import com.example.skillbox_hw_quiz.quiz.QuizStorage
 
 class SurveyFragment : Fragment() {
     private var _binding: FragmentSurveyBinding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,31 +26,31 @@ class SurveyFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSurveyBinding.inflate(inflater, container, false)
-        return binding?.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val quiz = QuizStorage.getQuiz(QuizStorage.Locale.Ru)
         displayQuestions(quiz)
-        binding?.backButton?.setOnClickListener {
+        binding.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_surveyFragment_to_helloFragment)
         }
 
 
-        binding?.buttonSend?.setOnClickListener {
+        binding.buttonSend.setOnClickListener {
             val selectedIndices = getSelectedIndices()
             if (selectedIndices.isNotEmpty()) {
                 val feedback = QuizStorage.answer(quiz, selectedIndices)
-                val bundle = bundleOf("feedback" to feedback)
-                Log.d("SurveyFragment", "Feedback: $feedback")
+                val bundle = bundleOf(FEEDBACK_KEY to feedback)
+
 
 
                 findNavController().navigate(R.id.action_surveyFragment_to_resultsFragment, bundle)
             } else {
-                Toast.makeText(context, "Пожалуйста, ответьте на все вопросы", Toast.LENGTH_SHORT)
+                Toast.makeText(context, R.string.hint_toast, Toast.LENGTH_SHORT)
                     .show()
             }
         }
@@ -60,31 +60,30 @@ class SurveyFragment : Fragment() {
 
 
     private fun displayQuestions(quiz: Quiz) {
-        // Use a loop to iterate through questions and answer options
         val questionTitles = listOf(
-            binding?.headerTitleQuestion0,
-            binding?.headerTitleQuestion1,
-            binding?.headerTitleQuestion2
+            binding.headerTitleQuestion0,
+            binding.headerTitleQuestion1,
+            binding.headerTitleQuestion2
         )
         val answerGroups = listOf(
-            listOf(binding?.rbAnswer1, binding?.rbAnswer2, binding?.rbAnswer3, binding?.rbAnswer4),
+            listOf(binding.rbAnswer1, binding.rbAnswer2, binding.rbAnswer3, binding.rbAnswer4),
             listOf(
-                binding?.rbAnswer1RadioGroup1,
-                binding?.rbAnswer2RadioGroup1,
-                binding?.rbAnswer3RadioGroup1,
-                binding?.rbAnswer4RadioGroup1
+                binding.rbAnswer1RadioGroup1,
+                binding.rbAnswer2RadioGroup1,
+                binding.rbAnswer3RadioGroup1,
+                binding.rbAnswer4RadioGroup1
             ),
             listOf(
-                binding?.rbAnswer1RadioGroup2,
-                binding?.rbAnswer2RadioGroup2,
-                binding?.rbAnswer3RadioGroup2,
-                binding?.rbAnswer4RadioGroup2
+                binding.rbAnswer1RadioGroup2,
+                binding.rbAnswer2RadioGroup2,
+                binding.rbAnswer3RadioGroup2,
+                binding.rbAnswer4RadioGroup2
             )
         )
 
         for (i in quiz.questions.indices) {
             val question = quiz.questions[i]
-            questionTitles[i]?.text = question.question
+            questionTitles[i].text = question.question
 
             for (j in question.answers.indices) {
                 val answer = question.answers[j]
@@ -114,5 +113,8 @@ class SurveyFragment : Fragment() {
         _binding = null
     }
 
+    companion object {
+        const val FEEDBACK_KEY = "feedback"
+    }
 
 }
