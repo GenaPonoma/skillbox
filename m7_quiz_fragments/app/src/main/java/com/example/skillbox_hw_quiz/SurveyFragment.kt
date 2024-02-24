@@ -87,21 +87,21 @@ class SurveyFragment : Fragment() {
 
             for (j in question.answers.indices) {
                 val answer = question.answers[j]
-                answerGroups[i][j]?.text = answer
+                answerGroups[i][j].text = answer
             }
         }
     }
 
     private fun getSelectedIndices(): List<Int> {
         val selectedRadioButtonIds = listOf(
-            binding?.radioGroup?.checkedRadioButtonId,
-            binding?.radioGroup1?.checkedRadioButtonId,
-            binding?.radioGroup2?.checkedRadioButtonId
+            binding.radioGroup.checkedRadioButtonId,
+            binding.radioGroup1.checkedRadioButtonId,
+            binding.radioGroup2.checkedRadioButtonId
         )
         val selectedIndices = mutableListOf<Int>()
         for (id in selectedRadioButtonIds) {
             if (id != -1) {
-                val index = resources.getResourceEntryName(id!!).split("_")[2].toInt() - 1
+                val index = resources.getResourceEntryName(id).split("_")[2].toInt() - 1
                 selectedIndices.add(index)
             }
         }
