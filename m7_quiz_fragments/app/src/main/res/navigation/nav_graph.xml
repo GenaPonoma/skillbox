@@ -13,7 +13,7 @@
             android:id="@+id/action_helloFragment_to_surveyFragment"
             app:destination="@id/surveyFragment"
             app:popUpTo="@id/helloFragment"
-            app:popUpToInclusive="false"
+
             />
     </fragment>
     <fragment
@@ -23,15 +23,16 @@
         tools:layout="@layout/fragment_survey">
         <action
             android:id="@+id/action_surveyFragment_to_helloFragment"
-            app:destination="@id/helloFragment" />
+            app:destination="@id/helloFragment"
+            app:popUpTo="@id/helloFragment"
+            app:popUpToInclusive="false"
+            />
         <action
             android:id="@+id/action_surveyFragment_to_resultsFragment"
             app:destination="@id/resultsFragment"
             app:popUpTo="@id/helloFragment"
-            app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_surveyFragment_to_resultsFragment2"
-            app:destination="@id/resultsFragment" />
+            app:popUpToInclusive="false"/>
+
 
     </fragment>
     <fragment

@@ -13,7 +13,7 @@
         android:layout_margin="12dp"
         android:fontFamily="@font/rubik_bold"
         android:gravity="center"
-        android:textSize="46dp"
+        android:textSize="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
