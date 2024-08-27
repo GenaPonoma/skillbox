@@ -7,6 +7,6 @@ import com.squareup.moshi.JsonClass
 data class Player(
     @Json(name = "luckyNumber")
     val luckyNumber: Int,
-
+    @Json(name = "username")
     val username: String
 )
