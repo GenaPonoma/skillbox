@@ -6,4 +6,15 @@
     </style>
 
     <style name="Theme.Homework" parent="Base.Theme.Homework" />
+    <style name="CustomFontStyle" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:textColor">#2E9C33</item>
+    </style>
+    <style name="CustomFont" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:textColor">#050805</item>
+    </style>
 </resources>
